@@ -9,15 +9,25 @@ public class DependencyInversionContainer {
 
     private Map<Class<?>, Object> candyMap;
 
-    public DependencyInversionContainer() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Processor processor = new Processor();
+    public DependencyInversionContainer() {
         this.candyMap = new java.util.HashMap<>(Map.of());
-        List<Class<?>> classes = processor.getClassesofInterest();
+    }
+
+    public void doTheThing() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        List<Class<?>> classes = getCandyClasses();
         for (Class<?> clazz: classes) {
             Constructor<?> constructor = clazz.getConstructor();
             Object objectObject = constructor.newInstance(null);
             candyMap.put(clazz, objectObject);
         }
+    }
+
+    private List<Class<?>> getCandyClasses() {
+        MyClassLoader myClassLoader = new MyClassLoader();
+        List<Class<?>> classes = myClassLoader.getClasses();
+        Processor processor = new Processor();
+        List<Class<?>> candyClasses = processor.getClassesWithCandyAnnotation(classes);
+        return candyClasses;
     }
 
     public <T> T getCandy(Class<T> clazz) {

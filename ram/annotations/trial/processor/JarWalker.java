@@ -3,7 +3,6 @@ package ram.annotations.trial.processor;
 import ram.annotations.trial.Main;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -36,9 +35,13 @@ public class JarWalker {
         }
     }
 
-    public ClassLoader getClassLoader() throws MalformedURLException {
-        URL[] urls = {new URL("jar:file:" + getJarFilePath() + "!/")};
-        return URLClassLoader.newInstance(urls);
+    public ClassLoader getClassLoader() {
+        try {
+            URL[] urls = {new URL("jar:file:" + getJarFilePath() + "!/")};
+            return URLClassLoader.newInstance(urls);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private String getJarFilePath() {
