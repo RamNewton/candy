@@ -1,8 +1,8 @@
 package ram.annotations.trial.stuff;
 
-import ram.annotations.trial.myannotations.BoardName;
+import ram.annotations.trial.myannotations.Candy;
 
-@BoardName("it is a 8 x 8 board")
+@Candy
 public class ChessBoard {
     public ChessBoard() {
         System.out.println("Initialized a ChessBoard");

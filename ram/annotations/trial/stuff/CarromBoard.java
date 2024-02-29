@@ -1,8 +1,8 @@
 package ram.annotations.trial.stuff;
 
-import ram.annotations.trial.myannotations.BoardName;
+import ram.annotations.trial.myannotations.Candy;
 
-@BoardName("It is a square board with pockets on four corners")
+@Candy
 public class CarromBoard {
     public CarromBoard() {
         System.out.println("Initialized a Carrom board");
