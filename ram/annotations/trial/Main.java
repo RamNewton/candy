@@ -1,17 +1,15 @@
 package ram.annotations.trial;
 
 import ram.annotations.trial.processor.DependencyInversionContainer;
-import ram.annotations.trial.stuff.ChessBoard;
+import ram.annotations.trial.stuff.ChessGame;
 
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
 
 public class Main {
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, URISyntaxException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DependencyInversionContainer dic = new DependencyInversionContainer();
         dic.doTheThing();
-        ChessBoard chessBoard = dic.getCandy(ChessBoard.class);
-        chessBoard.printSquares();
-        chessBoard.printSquares();
+        ChessGame chessGame = dic.getCandy(ChessGame.class);
+        chessGame.startGame();
     }
 }
