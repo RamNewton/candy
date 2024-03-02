@@ -5,7 +5,7 @@ import ram.annotations.trial.myannotations.Candy;
 @Candy
 public class ChessGame {
 
-    private ChessBoard chessBoard;
+    private final ChessBoard chessBoard;
 
     public ChessGame(ChessBoard chessBoard) {
         this.chessBoard = chessBoard;
